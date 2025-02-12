@@ -26,7 +26,7 @@ const snackBar=(msg,icon)=>{
 }
 
 const onReset=()=>{
-    // postForm.reset()
+    postForm.reset()
     addPostbtn.classList.remove("d-none")
     updatePostbtn.classList.add("d-none")
 }
@@ -132,7 +132,6 @@ const onEdit=async(ele)=>{
 
 
 const onUpdate=async(ele)=>{
-    ele.preventDefault();
 loader.classList.remove("d-none")
 let updateID=localStorage.getItem("editID")
 console.log(updateID);
@@ -154,7 +153,7 @@ try{
                         <button class="btn btn-danger"onclick="onRemove(this)">Remove</button>
                     </div>
                 </div>`
-                // postForm.reset();
+                postForm.reset();
 
          onReset();
          snackBar("Post Updated Successfully","success")
@@ -209,13 +208,13 @@ const onPostSubmit=async(eve)=>{
         content:contentControl.value,
         userID:userIDControl.value
     }
-    // postForm.reset()
+   postForm.reset()
     loader.classList.remove("d-none")
     try{
         let res=await makeApiCall("POST",POST_URL,newObj)
         createCard(newObj,res)
         snackBar("Post Added Successfully","success")
-        // postForm.reset()
+        postForm.reset()
 
     }
     catch(err){
