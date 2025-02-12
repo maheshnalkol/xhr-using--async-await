@@ -173,6 +173,7 @@ updatePostbtn.addEventListener("click",onUpdate)
 
 
 const onRemove=async(ele)=>{
+    loader.classList.remove("d-none")
     let removeID=ele.closest(".col-md-4").id;
     let REMOVE_URL=`${BASE_URL}/posts/${removeID}.json`
 
@@ -196,6 +197,9 @@ const onRemove=async(ele)=>{
     catch(err){
         console.log(err);
         
+    }
+    finally{
+       loader.classList.add("d-none")
     }
 }
 
